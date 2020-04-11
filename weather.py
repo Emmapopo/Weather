@@ -21,7 +21,6 @@ if '-h' not in arguments and '-f' not in arguments :
         js = json.loads(data)
     except:
         js = None
-    print(js)
     temp = js['main']['temp']
     hum = js['main']['humidity']
     time_stamp = js['dt']
@@ -31,7 +30,6 @@ if '-h' not in arguments and '-f' not in arguments :
     dict_data = [temp, hum]
     print('At', location, 'and time', time_stamp , 'the temperature is:', temp, 'while the humidity is', hum)
     dict = {str(time_stamp):dict_data}
-    print(dict)
 
     if location not in db.getall():
         db.set(dict_key, dict)
@@ -66,8 +64,6 @@ elif'-f' in arguments :
         js1 = json.loads(data1)
     except:
         js1 = None
-
-    print(js1['hourly'])
     start_time = js1['current']['dt']
     x = list(range(24))
 
